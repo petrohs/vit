@@ -20,6 +20,11 @@ sub parse_args {
       shift @ARGV;
       next;
     }
+    if ( $ARGV[0] eq '--rcFile' || $ARGV[0] eq '-rcFile' || $ARGV[0] eq '-f' ) {
+      $rcFile = $ARGV[1];
+      shift @ARGV;
+      next;
+    }    
     $cli_args .= "$ARGV[0] ";
     shift @ARGV;
     next;
@@ -44,6 +49,7 @@ sub usage {
   print "  -audit     print task commands to vit_audit.log\n";
   print "  -titlebar  sets the xterm titlebar to \"$version\"\n";
   print "  -version  prints the version\n";
+  print "  -rcFile  ruta del rcfile alterno\n";  
   print "  task_args  any set of task commandline args that print an \"ID\" column\n";
   exit 0;
 }
