@@ -5,7 +5,7 @@ sub parse_report_line {
   my ($l,$str) = @_;
   &parse_line($l,$str);
   if ( $current_command eq 'summary' && $parsed_tokens[0] =~ /^(\d+) project/ ) {
-    $num_projects = $1;extract_color
+    $num_projects = $1;
     return;
   }
   push @{ $report_tokens[$l] }, (@parsed_tokens);
