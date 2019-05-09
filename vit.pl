@@ -87,6 +87,7 @@ our $tasks_completed = 0;
 our $tasks_pending = 0;
 our $task_selected_idx = 0;
 our $titlebar = 0;
+our $rcFile = '';
 our $version = '%VERSION%';
 our $REPORT_LINES;
 our $REPORT_COLS;
