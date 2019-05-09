@@ -5,7 +5,7 @@ sub parse_report_line {
   my ($l,$str) = @_;
   &parse_line($l,$str);
   if ( $current_command eq 'summary' && $parsed_tokens[0] =~ /^(\d+) project/ ) {
-    $num_projects = $1;
+    $num_projects = $1;extract_color
     return;
   }
   push @{ $report_tokens[$l] }, (@parsed_tokens);
@@ -129,8 +129,8 @@ sub extract_color {
   $parsed_colors_fg[1] = -1;
   $parsed_colors_bg[1] = -1;
   $parsed_attrs[1] = '';
-  &audit("EXEC $task rc._forcecolor=on color $s 2>&1");
-  open(IN2,"$task rc._forcecolor=on color $s 2>&1 |");
+  &audit("EXEC $task $rcFile rc._forcecolor=on color $s 2>&1");
+  open(IN2,"$task $rcFile rc._forcecolor=on color $s 2>&1 |");
   while(<IN2>){
     if ( $_ =~ /Your sample:/ ) {
       $_ = <IN2>; $_ = <IN2>;

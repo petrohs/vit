@@ -21,8 +21,8 @@ sub init_task_env {
   my @reports;
   my $id_column = 0;
   my ($header_color,$task_header_color,$vit_header_color);
-  &audit("EXEC $task show 2>&1");
-  open(IN,"$task show 2>&1 |");
+  &audit("EXEC $task $rcFile show 2>&1");
+  open(IN,"$task $rcFile show 2>&1 |");
   while(<IN>) {
     chop;
     if ( $_ =~ /color\.header\s+(.*)/ ) {
@@ -80,8 +80,8 @@ sub init_task_env {
     chop $cli_args;
     $default_command = $cli_args;
   }
-  &audit("EXEC $task rc._forcecolor=on rc.verbose=on $default_command 2>&1");
-  open(IN,"$task rc._forcecolor=on rc.verbose=on $default_command 2>&1 |");
+  &audit("EXEC $task $rcFile rc._forcecolor=on rc.verbose=on $default_command 2>&1");
+  open(IN,"$task $rcFile rc._forcecolor=on rc.verbose=on $default_command 2>&1 |");
   while(<IN>) {
     chop;
     if ( $_ =~ /ID/ || ($default_command eq 'summary' && $_ =~ /Project/) ) {

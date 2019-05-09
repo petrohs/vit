@@ -186,7 +186,7 @@ sub task_filter {
 sub task_modify {
   my $args = $_[0];
   my $id = $report2taskid[$task_selected_idx];
-  &shell_exec("$task $id modify $args",'wait');
+  &shell_exec("$task $rcFile $id modify $args",'wait');
   $reread_needed = 1;
 }
 
